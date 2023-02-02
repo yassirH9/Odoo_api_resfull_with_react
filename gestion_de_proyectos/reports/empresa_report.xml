@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.report" id="gestion_de_proyectos.empresa_report">
+            <field name="name">Reporte De Empresa</field>
+            <field name="model">gestion_de_proyectos.empresa</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">gestion_de_proyectos.empresa_report_template</field>
+            <field name="report_file">gestion_de_proyectos.rempresa_report_template</field>
+            <field name="binding_model_id" ref="gestion_de_proyectos.model_gestion_de_proyectos_empresa" />
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

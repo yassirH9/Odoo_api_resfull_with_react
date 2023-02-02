@@ -1,0 +1,128 @@
+<odoo>
+  <data>
+    <!-- Vista seccion empresa -->
+    <record model="ir.ui.view" id="gestion_de_proyectos.empresa_tree">
+      <field name="name">gestion_de_proyectos.empresa.tree</field>
+      <field name="model">gestion_de_proyectos.empresa</field>
+      <field name="arch" type="xml">
+        <tree>
+          <!-- groups="gestion_de_proyectos.grupo_jefeproyectos, gestion_de_proyectos.grupo_administrador, gestion_de_proyectos.grupo_analista" -->
+          <field name="nombre"/>
+          <field name="nif"  groups="gestion_de_proyectos.grupo_jefeproyectos"/>
+          <field name="contactoC" groups="gestion_de_proyectos.grupo_jefeproyectos"/>
+          <field name="contactoN" groups="gestion_de_proyectos.grupo_jefeproyectos"/>
+          <field name="totalcost"/>
+          <field name="calkcost"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="gestion_de_proyectos.empresa_form">
+      <field name="name">gestion_de_proyectos.empresa.form</field>
+      <field name="model">gestion_de_proyectos.empresa</field>
+      <field name="arch" type="xml">
+        <form>
+          <group id="group1" colspan="2" col="2">
+            <field name="imagen" widget="image" height="120px" width="120px"/>
+            <field name="nombre"/>
+            <field name="nif"  groups="gestion_de_proyectos.grupo_jefeproyectos"/>
+            <field name="contactoC"/>
+            <field name="contactoN"/>
+            <field name="totalcost"/>
+            <field name="calkcost"/>
+            <field name="proyectos">
+              <tree>
+                <field name="name"></field>
+                <field name="label_tasks"></field>
+                <field name="description"></field>
+              </tree>
+            </field>
+          </group>
+        </form>
+      </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="gestion_de_proyectos.empresa_action_window">
+      <field name="name">Empresas</field>
+      <field name="res_model">gestion_de_proyectos.empresa</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="GestionDeProyectos" id="gestion_de_proyectos.menu_root"/>
+    <menuitem name="GestionDeProyectos" id="gestion_de_proyectos.empresa_menu" parent="gestion_de_proyectos.menu_root"/>
+    <!-- Actions -->
+    <menuitem name="GestionDeProyectos" id="gestion_de_proyectos.empresa_menu_incidencias" parent="gestion_de_proyectos.empresa_menu" action="gestion_de_proyectos.empresa_action_window"/>
+    <!-- Tarea menu -->
+    <menuitem name="Tareas" id="menu_project_management_task" parent="gestion_de_proyectos.menu_root" action="project.action_view_all_task"/>
+
+
+    <!-- Vista heredada -->
+    <record id="project_view_form_inherit" model="ir.ui.view">
+      <field name="name">project.project.view.inherit</field>
+      <field name="model">project.project</field>
+      <field name="inherit_id" ref="project.edit_project"></field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='partner_id']" position="after">
+          <field name="empresa"/>
+        </xpath>
+      </field>
+    </record>
+
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="gestion_de_proyectos.list">
+      <field name="name">GestionDeProyectos list</field>
+      <field name="model">gestion_de_proyectos.gestion_de_proyectos</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="gestion_de_proyectos.action_window">
+      <field name="name">GestionDeProyectos window</field>
+      <field name="res_model">gestion_de_proyectos.gestion_de_proyectos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="gestion_de_proyectos.action_server">
+      <field name="name">GestionDeProyectos server</field>
+      <field name="model_id" ref="model_gestion_de_proyectos_gestion_de_proyectos"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="GestionDeProyectos" id="gestion_de_proyectos.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="gestion_de_proyectos.menu_1" parent="gestion_de_proyectos.menu_root"/>
+    <menuitem name="Menu 2" id="gestion_de_proyectos.menu_2" parent="gestion_de_proyectos.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="gestion_de_proyectos.menu_1_list" parent="gestion_de_proyectos.menu_1"
+              action="gestion_de_proyectos.action_window"/>
+    <menuitem name="Server to list" id="gestion_de_proyectos" parent="gestion_de_proyectos.menu_2"
+              action="gestion_de_proyectos.action_server"/>
+-->
+  </data>
+</odoo>

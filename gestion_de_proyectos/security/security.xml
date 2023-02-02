@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <data>
+    <!-- Grupo de Administrador-->
+    <record id="grupo_administrador" model="res.groups">
+        <field name="name">Empresa/Administrador proyectos</field>
+        <field name="comment">Perfil administrador de proyectos y empresas</field>
+    </record>
+    <!-- Grupo de Jefe de proyectos-->
+    <record id="grupo_jefeproyectos" model="res.groups">
+        <field name="name">Empresa/Jefe proyectos</field>
+        <field name="comment">Perfil jefe de proyectos</field>
+    </record>
+    <!-- Grupo de Analista-->
+    <record id="grupo_analista" model="res.groups">
+        <field name="name">Empresa/Analista</field>
+        <field name="comment">Perfil analista programador</field>
+    </record>
+    <!-- Grupo de Programador-->
+    <record id="grupo_programador" model="res.groups">
+        <field name="name">Empresa/Programador</field>
+        <field name="comment">Perfil programador</field>
+    </record>
+
+    <!-- Grupo programador en proyectos -->
+    <record id="project_grupo_programador" model="res.groups">
+        <field name="name">Proyecto/Programador</field>
+        <field name="comment">Perfil programador para proyectos</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="base.module_category_services_project"/>
+    </record>
+ </data>
+</odoo>

@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <template id="assets_common" inherit_id="web.assets_common" name="My Colours">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss" href="gestion_de_proyectos/static/src/SCSS/style.scss"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>
